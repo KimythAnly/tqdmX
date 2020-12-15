@@ -46,10 +46,9 @@ class TqdmWrapper():
         self.depth = depth
         self.msg = ''
         self._msg = ''
+        self.default_kv_format = format_str(['bold', 'blue'], '{key}: ') + '{value}'
         self.ctrls = Dict({
             'default': 'default',
-            'key': ['bold', 'blue'],
-            'value': 'white',
             'end': 'end'
         })
 
@@ -70,18 +69,20 @@ class TqdmWrapper():
     def _add_list(self, msg):
         return ''.join(msg)
 
-    def _add_dict(self, msg):
-        ret = '\n'.join([format_str(self.ctrls.key, f'{k}: ') + format_str(self.ctrls.value, v)\
+    def _add_dict(self, msg, kv_format):
+        if kv_format is None:
+            kv_format = self.default_kv_format
+        ret = '\n'.join([kv_format.format(key=k, value=v)
          for k, v in msg.items()])
         return ret
 
-    def add(self, msg):
+    def add(self, msg, kv_format=None):
         if isinstance(msg, str):
             _msg = self._add_str(msg)
         elif isinstance(msg, list):
             _msg = self._add_list(msg)
         elif isinstance(msg, dict):
-            _msg = self._add_dict(msg)
+            _msg = self._add_dict(msg, kv_format)
         if len(self.msg) > 0:
             self.msg = self.msg + '\n' + _msg
         else:
