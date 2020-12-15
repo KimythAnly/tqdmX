@@ -29,7 +29,10 @@ def format_str(fmt, s, end=None):
         return ''.join([symbols[f] for f in fmt]) + str(s) + end
     return symbols[fmt] + str(s) + end
 
-
+# =========================================================
+#  Source: https://stackoverflow.com/questions/2186919
+#  Author: John Machin
+# =========================================================
 strip_ANSI_escape_sequences_sub = re.compile(r"""
     \x1b     # literal ESC
     \[       # literal [
@@ -38,6 +41,7 @@ strip_ANSI_escape_sequences_sub = re.compile(r"""
     """, re.VERBOSE).sub
 def strip_ANSI_escape_sequences(s):
     return strip_ANSI_escape_sequences_sub("", s)
+# =========================================================
 
 class TqdmWrapper():
     def __init__(self, iterable, depth=1, **kwargs):
