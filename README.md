@@ -23,4 +23,4 @@ for i in tw:
   time.sleep(0.5)
 ```
 
-For the demo gif shown above, you may refer to `test.py`.
+For the demo gif shown above, you may refer to `tests/test.py`.
