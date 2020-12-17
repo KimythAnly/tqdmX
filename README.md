@@ -4,13 +4,9 @@ This is a tqdm wrapper for multi-line logging.
 ## Demo
 <img src="/demo.gif" width="768"/>
 
-## Requirements
-- tqdm
-- addict
-
-You can install the requirements using the following script.
+## Installation
 ```
-pip install -r requirements.txt
+pip install tqdmX
 ```
 
 ## Usage
