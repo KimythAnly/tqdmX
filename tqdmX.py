@@ -1,6 +1,7 @@
 import sys
 import shutil
 import re
+import time
 from addict import Dict
 from tqdm import tqdm
 
@@ -44,7 +45,7 @@ def strip_ANSI_escape_sequences(s):
 # =========================================================
 
 class TqdmWrapper():
-    def __init__(self, iterable, depth=1, **kwargs):
+    def __init__(self, iterable, depth=0, **kwargs):
         self.fp = sys.stdout
         self.tqdm = tqdm(iterable, dynamic_ncols=True, **kwargs)
         self.depth = depth
@@ -100,14 +101,13 @@ class TqdmWrapper():
 
     def update(self, *args):
         if len(self._msg) > 0:
-            n_line = self._msg.count('\n') + self.depth
+            n_line = self._msg.count('\n') +1
         else:
             n_line = 0
         _msg_filled = [self.fill(m) for m in self.msg.split('\n')]
         _msg = '\n'.join(_msg_filled)
         self._msg = n_line * symbols.prev_line + _msg
         tqdm.write(self._msg, self.fp)
-        self.fp.flush()
         self.msg = ''
 
 
