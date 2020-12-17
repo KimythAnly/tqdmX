@@ -14,7 +14,8 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-```
+The following is a simple example.
+```python
 import time
 from tqdmX import TqdmWrapper, format_str
 tw = TqdmWrapper(range(10))
@@ -25,3 +26,5 @@ for i in tw:
   tw.update()
   time.sleep(0.5)
 ```
+
+For the demo gif shown above, you may refer to `test.py`.
