@@ -72,7 +72,7 @@ class TqdmWrapper():
         return msg
 
     def _add_list(self, msg):
-        return ''.join(str(msg))
+        return ''.join([str(s) for s in msg])
 
     def _add_dict(self, msg, kv_format):
         if kv_format is None:
