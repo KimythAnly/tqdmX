@@ -72,7 +72,7 @@ class TqdmWrapper():
         return msg
 
     def _add_list(self, msg):
-        return ''.join(msg)
+        return ''.join(str(msg))
 
     def _add_dict(self, msg, kv_format):
         if kv_format is None:
@@ -88,6 +88,8 @@ class TqdmWrapper():
             _msg = self._add_list(msg)
         elif isinstance(msg, dict):
             _msg = self._add_dict(msg, kv_format)
+        else:
+            _msg = str(msg)
         if len(self.msg) > 0:
             self.msg = self.msg + '\n' + _msg
         else:
@@ -108,6 +110,7 @@ class TqdmWrapper():
         _msg = '\n'.join(_msg_filled)
         self._msg = n_line * symbols.prev_line + _msg
         tqdm.write(self._msg, self.fp)
+        self.fp.flush()
         self.msg = ''
 
 __all__ = [

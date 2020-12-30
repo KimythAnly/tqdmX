@@ -2,7 +2,7 @@
 This is a tqdm wrapper for multi-line logging.
 
 ## Demo
-<img src="/demo.gif" width="768"/>
+<img src="https://github.com/KimythAnly/tqdmX/blob/main/demo.gif" width="768"/>
 
 ## Installation
 ```

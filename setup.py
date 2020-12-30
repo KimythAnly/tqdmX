@@ -4,8 +4,8 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="tqdmX", # Replace with your own username
-    version="0.0.2",
+    name="tqdmX",
+    version="0.0.3",
     author="KimythAnly",
     author_email="kimythanly@gmail.com",
     description="A tqdm wrapper for multi-line logging.",
