@@ -1,3 +1,4 @@
+# This project is deprecated. Please refer to https://github.com/KimythAnly/qqdm
 # tqdmX
 This is a tqdm wrapper for multi-line logging.
 
